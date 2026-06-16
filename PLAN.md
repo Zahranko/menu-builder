@@ -29,13 +29,13 @@
         (e.g. canCustomize(tier), canUseCustomDomain(tier)). Both clients rely on these rules.
 
 ## Phase 2 — Public page rendering (the core value)
-- [ ] 10. TEMPLATE REGISTRY: central map `template_id -> component` + the data contract
+- [x] 10. TEMPLATE REGISTRY: central map `template_id -> component` + the data contract
          every template receives. Adding a template later = add one entry, nothing else.
-- [ ] 11. Public route `/[slug]`: load site by slug. If unpublished/not found -> clean 404.
-- [ ] 12. Template #1 (renders name, logo, hero, bg, product list via card style).
-- [ ] 13. Template #2 (different layout, same data contract).
-- [ ] 14. Product Card style A and style B (templates pick a card style).
-- [ ] 15. Mobile-friendly + fast (server-rendered).
+- [x] 11. Public route `/[slug]`: load site by slug. If unpublished/not found -> clean 404.
+- [x] 12. Template #1 (renders name, logo, hero, bg, product list via card style).
+- [x] 13. Template #2 (different layout, same data contract).
+- [x] 14. Product Card style A and style B (templates pick a card style).
+- [x] 15. Mobile-friendly + fast (server-rendered).
 
 ## Phase 3 — Web dashboard (form-based editor)
 - [ ] 16. Dashboard home: list owner's site, "edit" + "view live" links.
