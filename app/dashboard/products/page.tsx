@@ -67,13 +67,11 @@ export default async function ProductsPage({ searchParams }: Props) {
               <div key={product.id} className="p-4 flex flex-col sm:flex-row sm:items-center gap-3">
                 {/* Image + name/description */}
                 <div className="flex items-center gap-3 flex-1 min-w-0">
-                  {product.image_url && (
-                    <img
-                      src={product.image_url}
-                      alt={product.name}
-                      className="w-12 h-12 rounded-lg object-cover shrink-0 bg-gray-100"
-                    />
-                  )}
+                  <img
+                    src={product.image_url ?? '/product-placeholder.svg'}
+                    alt={product.name}
+                    className="w-12 h-12 rounded-lg object-cover shrink-0 bg-gray-100"
+                  />
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-gray-900 text-sm truncate">{product.name}</p>
                     <p className="text-xs text-gray-400 truncate">{product.description}</p>
