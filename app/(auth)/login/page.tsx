@@ -1,11 +1,11 @@
 import { login, signup } from './actions'
 
 interface Props {
-  searchParams: Promise<{ error?: string }>
+  searchParams: Promise<{ error?: string; info?: string }>
 }
 
 export default async function LoginPage({ searchParams }: Props) {
-  const { error } = await searchParams
+  const { error, info } = await searchParams
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -15,6 +15,11 @@ export default async function LoginPage({ searchParams }: Props) {
         {error && (
           <p className="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
             {error}
+          </p>
+        )}
+        {info && (
+          <p className="mb-4 text-sm text-blue-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2">
+            {info}
           </p>
         )}
 
