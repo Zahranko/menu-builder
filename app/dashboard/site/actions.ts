@@ -40,16 +40,17 @@ export async function saveSettings(formData: FormData) {
   const updates: Record<string, unknown> = {
     slug,
     business_name: (formData.get('business_name') as string).trim(),
+    // Hero title/subtitle available to all tiers
+    hero_title:    (formData.get('hero_title') as string).trim(),
+    hero_subtitle: (formData.get('hero_subtitle') as string).trim(),
   }
 
   if (canCustom) {
-    updates.hero_title    = (formData.get('hero_title') as string).trim()
-    updates.hero_subtitle = (formData.get('hero_subtitle') as string).trim()
-    updates.template_id   = formData.get('template_id') as string
-    updates.card_style    = formData.get('card_style') as string
-    updates.bg_color      = formData.get('bg_color') as string || '#ffffff'
-    updates.bg_image_url  = (formData.get('bg_image_url') as string) || null
-    updates.logo_url      = (formData.get('logo_url') as string) || null
+    updates.template_id  = formData.get('template_id') as string
+    updates.card_style   = formData.get('card_style') as string
+    updates.bg_color     = formData.get('bg_color') as string || '#ffffff'
+    updates.bg_image_url = (formData.get('bg_image_url') as string) || null
+    updates.logo_url     = (formData.get('logo_url') as string) || null
   }
 
   const { error } = await supabase.from('sites').update(updates).eq('id', site.id)

@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import Nav from '@/components/dashboard/Nav'
-import { deleteProduct, moveProduct } from './actions'
+import DeleteProductButton from '@/components/dashboard/DeleteProductButton'
+import { moveProduct } from './actions'
 import type { Product } from '@/lib/types'
 
 interface Props {
@@ -127,18 +128,7 @@ export default async function ProductsPage({ searchParams }: Props) {
                     Edit
                   </Link>
 
-                  <form>
-                    <input type="hidden" name="id" value={product.id} />
-                    <button
-                      formAction={deleteProduct}
-                      className="text-xs text-red-400 hover:text-red-700 px-2 py-1 rounded hover:bg-red-50 transition-colors"
-                      onClick={e => {
-                        if (!confirm('Delete this product?')) e.preventDefault()
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </form>
+                  <DeleteProductButton productId={product.id} />
                 </div>
               </div>
             ))}
