@@ -15,16 +15,16 @@
 - [x] 4. Project structure: /app, /components, /lib, /templates.
 
 ## Phase 1 — Data model, auth, shared contract
-- [ ] 5. DB tables (Supabase migrations):
+- [x] 5. DB tables (Supabase migrations):
         - `sites` (id, owner_id, slug UNIQUE, business_name, template_id,
           card_style, bg_color, bg_image_url, logo_url, hero_title, hero_subtitle,
           tier ['free','t2','t3'] default 'free', published bool, created_at)
         - `products` (id, site_id, name, description, price, image_url, sort_order)
-- [ ] 6. Define the SHARED DATA CONTRACT (TypeScript types + matching Dart later):
+- [x] 6. Define the SHARED DATA CONTRACT (TypeScript types + matching Dart later):
         document the exact shape of a Site and Product. Both clients use this.
-- [ ] 7. Supabase email/password auth: login + signup (web).
-- [ ] 8. Row Level Security: owners read/write only their own site & products.
-- [ ] 9. Central logic module (/lib): slug validation (lowercase, no spaces,
+- [x] 7. Supabase email/password auth: login + signup (web).
+- [x] 8. Row Level Security: owners read/write only their own site & products.
+- [x] 9. Central logic module (/lib): slug validation (lowercase, no spaces,
         reserved words: login/api/admin/etc), publish rules, tier-gating helper
         (e.g. canCustomize(tier), canUseCustomDomain(tier)). Both clients rely on these rules.
 
