@@ -71,6 +71,7 @@ export default async function SiteSettingsPage({ searchParams }: Props) {
                   className="flex-1 focus:outline-none min-w-0"
                 />
               </div>
+              <p className="text-xs text-gray-400">2–50 characters. Lowercase letters, numbers, hyphens only. No spaces.</p>
             </div>
           </section>
 

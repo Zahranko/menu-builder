@@ -49,11 +49,11 @@
          t2 unlocks customize; t3 shows custom-domain placeholder "coming soon").
 
 ## Phase 4 — Web PWA-ish polish & ship web core
-- [ ] 23. Slug validation everywhere; empty/loading/error states.
-- [ ] 24. Mobile-friendly layout pass on web dashboard.
+- [x] 23. Slug validation everywhere; empty/loading/error states.
+- [x] 24. Mobile-friendly layout pass on web dashboard.
 - [ ] 25. Deploy to Vercel, connect domain, confirm `ourdomain.com/<slug>` live.
 - [ ] 26. Smoke test: signup -> build menu -> publish -> view public page on phone.
-- [ ] 27. README (run + deploy). >>> WEB CORE DONE. Backend now stable for Flutter. <<<
+- [x] 27. README (run + deploy). >>> WEB CORE DONE. Backend now stable for Flutter. <<<
 
 ## Phase 5 — Flutter app (built against the stable backend)
 - [ ] 28. Create Flutter project. Add `supabase_flutter`. Configure same Supabase project.
