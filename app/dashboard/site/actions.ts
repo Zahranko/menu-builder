@@ -39,10 +39,16 @@ export async function saveSettings(formData: FormData) {
 
   const updates: Record<string, unknown> = {
     slug,
-    business_name: (formData.get('business_name') as string).trim(),
-    hero_title:    (formData.get('hero_title') as string).trim(),
-    hero_subtitle: (formData.get('hero_subtitle') as string).trim(),
-    footer_text:   (formData.get('footer_text') as string).trim(),
+    business_name:    (formData.get('business_name') as string).trim(),
+    hero_title:       (formData.get('hero_title') as string).trim(),
+    hero_subtitle:    (formData.get('hero_subtitle') as string).trim(),
+    footer_text:      (formData.get('footer_text') as string).trim(),
+    footer_hours:     (formData.get('footer_hours') as string).trim(),
+    footer_address:   (formData.get('footer_address') as string).trim(),
+    social_instagram: (formData.get('social_instagram') as string).trim(),
+    social_facebook:  (formData.get('social_facebook') as string).trim(),
+    social_twitter:   (formData.get('social_twitter') as string).trim(),
+    social_tiktok:    (formData.get('social_tiktok') as string).trim(),
   }
 
   if (canCustom) {

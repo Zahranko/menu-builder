@@ -20,6 +20,12 @@ export interface Site {
   hero_title: string
   hero_subtitle: string
   footer_text: string
+  footer_hours: string
+  footer_address: string
+  social_instagram: string
+  social_facebook: string
+  social_twitter: string
+  social_tiktok: string
   tier: Tier
   published: boolean
   created_at: string

@@ -93,22 +93,64 @@ export default async function SiteSettingsPage({ searchParams }: Props) {
             </div>
           </section>
 
-          {/* Footer — all tiers */}
-          <section className="bg-white rounded-2xl border border-black/[0.06] shadow-sm p-6 space-y-4">
+          {/* Footer & Contact — all tiers */}
+          <section className="bg-white rounded-2xl border border-black/[0.06] shadow-sm p-6 space-y-5">
             <div>
-              <h2 className="font-semibold text-gray-900 text-sm">Footer</h2>
-              <p className="text-xs text-gray-400 mt-0.5">Shown at the bottom of your public page. Great for hours, phone, or address.</p>
+              <h2 className="font-semibold text-gray-900 text-sm">Footer &amp; Contact</h2>
+              <p className="text-xs text-gray-400 mt-0.5">Shown at the bottom of your public page. Leave any field blank to hide it.</p>
             </div>
+
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Footer text</label>
-              <textarea
+              <label className="block text-sm font-medium text-gray-700 mb-1">Tagline / short description</label>
+              <input
                 name="footer_text"
                 defaultValue={site.footer_text}
-                rows={3}
-                placeholder={"e.g. Open Mon–Sat 11am–10pm · 📞 555-1234 · 123 Main St"}
-                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 transition-shadow resize-none"
+                placeholder="e.g. Fresh food made daily with love"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
               />
-              <p className="mt-1.5 text-xs text-gray-400">Leave blank to show default branding only.</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Hours</label>
+              <input
+                name="footer_hours"
+                defaultValue={site.footer_hours}
+                placeholder="e.g. Mon–Sat 11am–10pm, Sun 12pm–8pm"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Address / Location</label>
+              <input
+                name="footer_address"
+                defaultValue={site.footer_address}
+                placeholder="e.g. 123 Main St, New York, NY"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+              />
+            </div>
+
+            <div>
+              <p className="block text-sm font-medium text-gray-700 mb-2">Social links</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { name: 'social_instagram', label: 'Instagram', placeholder: 'https://instagram.com/yourpage', value: site.social_instagram },
+                  { name: 'social_facebook',  label: 'Facebook',  placeholder: 'https://facebook.com/yourpage',  value: site.social_facebook },
+                  { name: 'social_twitter',   label: 'X / Twitter', placeholder: 'https://x.com/yourhandle',    value: site.social_twitter },
+                  { name: 'social_tiktok',    label: 'TikTok',    placeholder: 'https://tiktok.com/@yourpage',  value: site.social_tiktok },
+                ].map(field => (
+                  <div key={field.name}>
+                    <label className="block text-xs text-gray-500 mb-1">{field.label}</label>
+                    <input
+                      name={field.name}
+                      defaultValue={field.value}
+                      placeholder={field.placeholder}
+                      type="url"
+                      className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
