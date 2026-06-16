@@ -11,6 +11,7 @@ create table public.sites (
   logo_url        text,
   hero_title      text not null default '',
   hero_subtitle   text not null default '',
+  footer_text     text not null default '',
   tier            text not null default 'free' check (tier in ('free', 't2', 't3')),
   published       boolean not null default false,
   created_at      timestamptz not null default now()

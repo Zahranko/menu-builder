@@ -19,6 +19,7 @@ export interface Site {
   logo_url: string | null
   hero_title: string
   hero_subtitle: string
+  footer_text: string
   tier: Tier
   published: boolean
   created_at: string

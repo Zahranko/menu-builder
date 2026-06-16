@@ -93,6 +93,25 @@ export default async function SiteSettingsPage({ searchParams }: Props) {
             </div>
           </section>
 
+          {/* Footer — all tiers */}
+          <section className="bg-white rounded-2xl border border-black/[0.06] shadow-sm p-6 space-y-4">
+            <div>
+              <h2 className="font-semibold text-gray-900 text-sm">Footer</h2>
+              <p className="text-xs text-gray-400 mt-0.5">Shown at the bottom of your public page. Great for hours, phone, or address.</p>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Footer text</label>
+              <textarea
+                name="footer_text"
+                defaultValue={site.footer_text}
+                rows={3}
+                placeholder={"e.g. Open Mon–Sat 11am–10pm · 📞 555-1234 · 123 Main St"}
+                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 transition-shadow resize-none"
+              />
+              <p className="mt-1.5 text-xs text-gray-400">Leave blank to show default branding only.</p>
+            </div>
+          </section>
+
           {/* Customize — t2+ only */}
           <section className={`bg-white rounded-2xl border p-6 space-y-5 ${canCustom ? 'border-gray-200' : 'border-gray-100 opacity-60'}`}>
             <div className="flex items-center justify-between">

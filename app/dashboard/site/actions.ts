@@ -40,9 +40,9 @@ export async function saveSettings(formData: FormData) {
   const updates: Record<string, unknown> = {
     slug,
     business_name: (formData.get('business_name') as string).trim(),
-    // Hero title/subtitle available to all tiers
     hero_title:    (formData.get('hero_title') as string).trim(),
     hero_subtitle: (formData.get('hero_subtitle') as string).trim(),
+    footer_text:   (formData.get('footer_text') as string).trim(),
   }
 
   if (canCustom) {
