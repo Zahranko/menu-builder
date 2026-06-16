@@ -38,14 +38,14 @@
 - [x] 15. Mobile-friendly + fast (server-rendered).
 
 ## Phase 3 — Web dashboard (form-based editor)
-- [ ] 16. Dashboard home: list owner's site, "edit" + "view live" links.
-- [ ] 17. Site settings form: business name, slug (uniqueness check), template picker,
+- [x] 16. Dashboard home: list owner's site, "edit" + "view live" links.
+- [x] 17. Site settings form: business name, slug (uniqueness check), template picker,
          card-style picker, bg color, hero title/subtitle. GATE customize by tier.
-- [ ] 18. Logo + background image upload to Supabase Storage; save URLs.
-- [ ] 19. Product manager: add / edit / delete products.
-- [ ] 20. Reorder products (sort_order; up/down or drag).
-- [ ] 21. Publish / unpublish toggle.
-- [ ] 22. Tier display + feature gating in UI (free can only add products;
+- [x] 18. Logo + background image upload to Supabase Storage; save URLs.
+- [x] 19. Product manager: add / edit / delete products.
+- [x] 20. Reorder products (sort_order; up/down or drag).
+- [x] 21. Publish / unpublish toggle.
+- [x] 22. Tier display + feature gating in UI (free can only add products;
          t2 unlocks customize; t3 shows custom-domain placeholder "coming soon").
 
 ## Phase 4 — Web PWA-ish polish & ship web core

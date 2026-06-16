@@ -1,0 +1,138 @@
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { createClient } from '@/lib/supabase/server'
+import Nav from '@/components/dashboard/Nav'
+import { deleteProduct, moveProduct } from './actions'
+import type { Product } from '@/lib/types'
+
+interface Props {
+  searchParams: Promise<{ error?: string }>
+}
+
+export default async function ProductsPage({ searchParams }: Props) {
+  const { error } = await searchParams
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  const { data: site } = await supabase
+    .from('sites')
+    .select('id')
+    .eq('owner_id', user!.id)
+    .single()
+
+  if (!site) redirect('/dashboard')
+
+  const { data: products } = await supabase
+    .from('products')
+    .select('*')
+    .eq('site_id', site.id)
+    .order('sort_order', { ascending: true })
+
+  const list: Product[] = products ?? []
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Nav activeHref="/dashboard/products" />
+      <main className="max-w-2xl mx-auto px-4 py-10">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-xl font-bold text-gray-900">Products</h1>
+          <Link
+            href="/dashboard/products/new"
+            className="px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors"
+          >
+            + Add product
+          </Link>
+        </div>
+
+        {error && (
+          <div className="mb-6 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+            {error}
+          </div>
+        )}
+
+        {list.length === 0 ? (
+          <div className="bg-white rounded-2xl border border-gray-200 p-12 text-center">
+            <p className="text-gray-400 text-sm">No products yet.</p>
+            <Link
+              href="/dashboard/products/new"
+              className="mt-4 inline-block text-sm text-gray-700 underline underline-offset-2"
+            >
+              Add your first product →
+            </Link>
+          </div>
+        ) : (
+          <div className="bg-white rounded-2xl border border-gray-200 divide-y divide-gray-100">
+            {list.map((product, idx) => (
+              <div key={product.id} className="flex items-center gap-4 p-4">
+                {product.image_url && (
+                  <img
+                    src={product.image_url}
+                    alt={product.name}
+                    className="w-12 h-12 rounded-lg object-cover shrink-0 bg-gray-100"
+                  />
+                )}
+                <div className="flex-1 min-w-0">
+                  <p className="font-medium text-gray-900 text-sm truncate">{product.name}</p>
+                  <p className="text-xs text-gray-400 truncate">{product.description}</p>
+                </div>
+                {product.price != null && (
+                  <span className="text-sm font-semibold text-gray-700 shrink-0">
+                    ${Number(product.price).toFixed(2)}
+                  </span>
+                )}
+
+                {/* Reorder buttons */}
+                <div className="flex flex-col gap-0.5 shrink-0">
+                  <form>
+                    <input type="hidden" name="id" value={product.id} />
+                    <input type="hidden" name="direction" value="up" />
+                    <button
+                      formAction={moveProduct}
+                      disabled={idx === 0}
+                      className="text-gray-300 hover:text-gray-600 disabled:opacity-20 text-xs leading-none"
+                      aria-label="Move up"
+                    >
+                      ▲
+                    </button>
+                  </form>
+                  <form>
+                    <input type="hidden" name="id" value={product.id} />
+                    <input type="hidden" name="direction" value="down" />
+                    <button
+                      formAction={moveProduct}
+                      disabled={idx === list.length - 1}
+                      className="text-gray-300 hover:text-gray-600 disabled:opacity-20 text-xs leading-none"
+                      aria-label="Move down"
+                    >
+                      ▼
+                    </button>
+                  </form>
+                </div>
+
+                <Link
+                  href={`/dashboard/products/${product.id}/edit`}
+                  className="text-xs text-gray-500 hover:text-gray-900 shrink-0"
+                >
+                  Edit
+                </Link>
+
+                <form>
+                  <input type="hidden" name="id" value={product.id} />
+                  <button
+                    formAction={deleteProduct}
+                    className="text-xs text-red-400 hover:text-red-700 shrink-0"
+                    onClick={e => {
+                      if (!confirm('Delete this product?')) e.preventDefault()
+                    }}
+                  >
+                    Delete
+                  </button>
+                </form>
+              </div>
+            ))}
+          </div>
+        )}
+      </main>
+    </div>
+  )
+}
