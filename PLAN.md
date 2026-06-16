@@ -51,7 +51,7 @@
 ## Phase 4 — Web PWA-ish polish & ship web core
 - [x] 23. Slug validation everywhere; empty/loading/error states.
 - [x] 24. Mobile-friendly layout pass on web dashboard.
-- [ ] 25. Deploy to Vercel, connect domain, confirm `ourdomain.com/<slug>` live.
+- [x] 25. Deploy to Vercel, connect domain, confirm `ourdomain.com/<slug>` live.
 - [ ] 26. Smoke test: signup -> build menu -> publish -> view public page on phone.
 - [x] 27. README (run + deploy). >>> WEB CORE DONE. Backend now stable for Flutter. <<<
 
