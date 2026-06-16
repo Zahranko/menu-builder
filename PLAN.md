@@ -11,7 +11,7 @@
 ## Phase 0 — Project setup (web)
 - [x] 1. Create Next.js app (App Router, TypeScript, Tailwind). Init git, first commit.
 - [x] 2. Create Supabase project. Add env vars (.env.local): URL + anon key. Note in README.
-- [ ] 3. Wire Supabase client into Next.js. Verify connection.
+- [x] 3. Wire Supabase client into Next.js. Verify connection.
 - [ ] 4. Project structure: /app, /components, /lib, /templates.
 
 ## Phase 1 — Data model, auth, shared contract
